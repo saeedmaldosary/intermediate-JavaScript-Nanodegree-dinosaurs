@@ -1,3 +1,4 @@
+// Create Constructor for Dinosaurs
 function Dino(species, weight, height, diet, where, when, fact) {
   this.species = species;
   this.weight = weight;
@@ -8,6 +9,7 @@ function Dino(species, weight, height, diet, where, when, fact) {
   this.fact = fact;
 }
 
+// Dinosaurs array object
 const dinos = [
   {
     species: "Triceratops",
@@ -83,6 +85,7 @@ const dinos = [
   },
 ];
 
+// Human Object
 const human = {
   name: "",
   height: {
@@ -93,6 +96,8 @@ const human = {
   diet: "",
 };
 
+// An immediately-invoked function expression, or IIFE (pronounced iffy)
+// to Set human object data
 var humanData = (function () {
   function setHumanData() {
     human.name = document.getElementById("name").value;
@@ -104,6 +109,7 @@ var humanData = (function () {
   return setHumanData;
 })();
 
+// Prototypal Inheritance to compare human height to dinosaurs tall
 Dino.prototype.compareHeight = function () {
   if (this.height > human.height) {
     return this.species + " was taller than you";
@@ -114,6 +120,7 @@ Dino.prototype.compareHeight = function () {
   }
 };
 
+// Prototypal Inheritance to compare human weight to dinosaurs weight
 Dino.prototype.compareWeight = function () {
   if (this.weight > human.weight) {
     return this.species + " weight more than you";
@@ -124,6 +131,7 @@ Dino.prototype.compareWeight = function () {
   }
 };
 
+// Prototypal Inheritance to compare human diet to dinosaurs diet
 Dino.prototype.compareDiet = function () {
   if (this.diet === human.diet) {
     return "Your diet was same as " + this.species + " diet!";
@@ -132,6 +140,7 @@ Dino.prototype.compareDiet = function () {
   }
 };
 
+// Function return random numbers to be used in get dinosaurs facts
 function randomDinoFact() {
   var randomNumbers = [];
   var numbers = [0, 1, 2, 3, 4, 5, 6, 7];
@@ -142,7 +151,9 @@ function randomDinoFact() {
   return randomNumbers;
 }
 
+// Function generate tiles and append it to the DOM and hide the form
 function GenerateTiles() {
+  // Get random numbers
   var random = randomDinoFact();
   for (var i = 0; i < dinos.length; i++) {
     let dino = new Dino(
@@ -182,6 +193,7 @@ function GenerateTiles() {
   document.getElementById("dino-compare").style.display = "none";
 }
 
+// Function to be called when the user click compare me!
 function displayInfographic() {
   humanData();
   GenerateTiles();
